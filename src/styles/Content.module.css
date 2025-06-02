@@ -1,0 +1,125 @@
+/* Content.module.css */
+
+/* 
+====================================
+DEFAULT STYLES (DESKTOP FIRST)
+====================================
+These styles apply to all screen sizes unless overridden below
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+.content {
+    display: flex;                    /* Side-by-side layout */
+    gap: 2rem;                       /* 32px space between columns */                 /* 32px padding around content */
+    min-height: calc(100vh - 200px); /* Full height minus header space */             /* Don't get too wide on large screens */                 /* Center the content */
+    width: 100%;
+    font-family: 'EB Garamond', 'Times New Roman', serif;                                        
+}
+
+.formColumn {
+    flex: 1;        /* Takes 1 part = 33.33% of width (1 out of 3 total) */
+    min-width: 0;
+    padding: 1.5rem;   /* Prevents flex items from overflowing */
+}
+
+.previewColumn {
+    flex: 1;        /* Takes 2 parts = 66.67% of width (2 out of 3 total) */
+    min-width: 0;
+    padding: 1.5rem;   /* Prevents flex items from overflowing */
+}
+
+/* 
+====================================
+TABLET BREAKPOINT (1024px and below)
+====================================
+Medium-sized screens like tablets and small laptops
+*/
+@media (max-width: 1024px) {
+    .content {
+        gap: 1.5rem;      /* Smaller gap = 24px (was 32px) */
+        padding: 1.5rem;  /* Less padding = 24px (was 32px) */
+    }
+    
+    /* 
+    Note: Columns still side-by-side but with less spacing
+    Form: 33% | Preview: 67%
+    */
+}
+
+/* 
+====================================
+MOBILE BREAKPOINT (768px and below)
+====================================
+Mobile phones and small tablets in portrait mode
+*/
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;  /* STACK VERTICALLY: Form on top, Preview below */
+        gap: 1rem;              /* Even smaller gap = 16px */
+        padding: 1rem;          /* Minimal padding = 16px */
+    }
+    
+    .formColumn,
+    .previewColumn {
+        flex: none;  /* Reset flex - both take full width now */
+    }
+    
+    /* 
+    New layout:
+    ┌─────────────┐
+    │    Form     │ <- Full width
+    │   (100%)    │
+    ├─────────────┤
+    │   Preview   │ <- Full width  
+    │   (100%)    │
+    └─────────────┘
+    */
+}
+
+/* 
+====================================
+EXTRA SMALL MOBILE (480px and below)
+====================================
+Very small phones - add if needed
+*/
+/*
+@media (max-width: 480px) {
+    .content {
+        padding: 0.5rem;  // Even less padding = 8px
+        gap: 0.5rem;      // Minimal gap = 8px
+    }
+}
+*/
+
+/* 
+====================================
+RESPONSIVE DESIGN NOTES:
+====================================
+
+1. MOBILE-FIRST vs DESKTOP-FIRST:
+   - We use desktop-first (default styles for desktop)
+   - Then override for smaller screens with max-width
+   - Alternative: mobile-first uses min-width
+
+2. BREAKPOINT LOGIC:
+   - 1024px+ : Side-by-side with normal spacing
+   - 768px-1024px : Side-by-side with reduced spacing  
+   - 0px-768px : Stacked vertically
+
+3. WHY THESE BREAKPOINTS?
+   - 768px: Most tablets switch to portrait mode
+   - 1024px: Common small laptop width
+   - These are industry standards
+
+4. FLEX EXPLANATION:
+   - flex: 1 and flex: 2 creates 1:2 ratio
+   - Total: 3 parts (1+2)
+   - Form gets 1/3 = 33.33%
+   - Preview gets 2/3 = 66.67%
+
+5. min-width: 0 EXPLANATION:
+   - Prevents flex items from overflowing
+   - Without it, long text might break layout
+   - CSS quirk, always include it
+*/

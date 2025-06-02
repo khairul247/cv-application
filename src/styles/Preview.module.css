@@ -1,0 +1,26 @@
+*
+
+.resumeHeader {
+    text-align: center;
+    margin: 2rem 1rem;
+}
+
+.previewSection {
+    background: white;
+    border-radius: 12px;           /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  /* Soft shadow */
+    padding: 2rem;
+    margin: 1rem;                  /* Space around the box */
+    border: 1px solid #e5e7eb;     /* Subtle border */
+}
+
+.rowEdu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sectionHeader {
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    margin-bottom: 0.5rem;
+}
