@@ -1,20 +1,11 @@
 /* Content.module.css */
 
-/* 
-====================================
-DEFAULT STYLES (DESKTOP FIRST)
-====================================
-These styles apply to all screen sizes unless overridden below
-*/
-
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 .content {
     display: flex;                    /* Side-by-side layout */
     gap: 2rem;                       /* 32px space between columns */                 /* 32px padding around content */
     min-height: calc(100vh - 200px); /* Full height minus header space */             /* Don't get too wide on large screens */                 /* Center the content */
-    width: 100%;
-    font-family: 'EB Garamond', 'Times New Roman', serif;                                        
+    width: 100%;                                       
 }
 
 .formColumn {
@@ -29,12 +20,7 @@ These styles apply to all screen sizes unless overridden below
     padding: 1.5rem;   /* Prevents flex items from overflowing */
 }
 
-/* 
-====================================
-TABLET BREAKPOINT (1024px and below)
-====================================
-Medium-sized screens like tablets and small laptops
-*/
+
 @media (max-width: 1024px) {
     .content {
         gap: 1.5rem;      /* Smaller gap = 24px (was 32px) */

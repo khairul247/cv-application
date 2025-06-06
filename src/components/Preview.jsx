@@ -1,6 +1,6 @@
 import styles from '../styles/Preview.module.css'
 
-export default function Preview({formData}) {
+export default function Preview({formData, experiences}) {
 
     return (
         <section className={styles.previewSection}>
@@ -43,134 +43,51 @@ export default function Preview({formData}) {
                     <div className={styles.newSection}>
                         <div className={styles.sectionHeader}>RELATED WORK EXPERIENCES</div>
                         <div className='workInfo'>
-                            <div className={styles.rowEdu}> 
-                                <span> <b> {formData.organization || 'Department of Magical Accidents and Catastrophes'} </b></span>
-                                <span>{formData.jobLocation || 'Ministry of Magic'}</span>
-                            </div>
+                            {experiences.map((experience) => (
+                            <div key={experience.id} className='experience-' style={{marginBottom: '0.5rem'} }>
+                                <div className={styles.rowEdu}> 
+                                    <span> <b> {experience.organization || 'Department of Magical Accidents and Catastrophes'} </b></span>
+                                    <span>{experience.jobLocation || 'Ministry of Magic'}</span>
+                                </div>
 
-                            <div className={styles.rowEdu}> 
-                                <span> <i>{formData.jobTitle || 'Auror Trainee'}</i></span>
-                                <span>
-                                    {(formData.startMonth && formData.startYear && formData.endMonth && formData.endYear) ? 
-                                        `${formData.startMonth} ${formData.startYear} - ${formData.endMonth} ${formData.endYear}` : 
-                                        "June 2024 - May 2025"
+                                <div className={styles.rowEdu}> 
+                                    <span> <i>{experience.jobTitle || 'Auror Trainee'}</i></span>
+                                    <span>
+                                        {(experience.startMonth || experience.startYear || experience.endMonth || experience.endYear) ? 
+                                            `${experience.startMonth} ${experience.startYear} - ${experience.endMonth} ${experience.endYear}` : 
+                                            "June 2024 - May 2025"
+                                        }
+                                    </span>
+                                </div>
+                                
+                                <div>
+                                    {(experience.responsibilities) ? 
+                                        experience.responsibilities.split('\n').map((line, index) => (
+                                            <div key={index} style={{ 
+                                                marginBottom: '3px',
+                                                paddingLeft: '15px',
+                                                textIndent: '-10px'
+                                            }}>
+                                                • {line}
+                                            </div>
+                                        )) :
+                                        [
+                                            "• Led specialized task force in neutralizing 15+ dark magic incidents across Greater London area",
+                                            "• Collaborated with Senior Aurors to develop new protective ward systems, improving department safety protocols by 40%",
+                                            "• Mentored 8 junior wizards in advanced defensive spell casting and emergency response procedures"
+                                        ].map((point, index) => (
+                                            <div key={index} style={{ 
+                                                marginBottom: '3px',
+                                                paddingLeft: '15px',
+                                                textIndent: '-10px'
+                                            }}>
+                                                {point}
+                                            </div>
+                                        ))
                                     }
-                                </span>
+                                </div>
                             </div>
-                            
-                            <div>
-                                {(formData.responsibilities) ? 
-                                    formData.responsibilities.split('\n').map((line, index) => (
-                                        <div key={index} style={{ 
-                                            marginBottom: '3px',
-                                            paddingLeft: '15px',
-                                            textIndent: '-15px'
-                                        }}>
-                                            {line}
-                                        </div>
-                                    )) :
-                                    [
-                                        "• Led specialized task force in neutralizing 15+ dark magic incidents across Greater London area",
-                                        "• Collaborated with Senior Aurors to develop new protective ward systems, improving department safety protocols by 40%",
-                                        "• Mentored 8 junior wizards in advanced defensive spell casting and emergency response procedures"
-                                    ].map((point, index) => (
-                                        <div key={index} style={{ 
-                                            marginBottom: '3px',
-                                            paddingLeft: '15px',
-                                            textIndent: '-10px'
-                                        }}>
-                                            {point}
-                                        </div>
-                                    ))
-                                }
-                            </div>
-
-                            <div className={styles.rowEdu}> 
-                                <span> <b> {formData.organization || 'Gryffindor Quidditch Team'} </b></span>
-                                <span>{formData.jobLocation || 'Hogwarts School'}</span>
-                            </div>
-
-                            <div className={styles.rowEdu}> 
-                                <span> <i>{formData.jobTitle || 'Captain'}</i></span>
-                                <span>
-                                    {(formData.startMonth && formData.startYear && formData.endMonth && formData.endYear) ? 
-                                        `${formData.startMonth} ${formData.startYear} - ${formData.endMonth} ${formData.endYear}` : 
-                                        "September 2022 - May 2025"
-                                    }
-                                </span>
-                            </div>
-                            
-                            <div>
-                                {(formData.responsibilities) ? 
-                                    formData.responsibilities.split('\n').map((line, index) => (
-                                        <div key={index} style={{ 
-                                            marginBottom: '3px',
-                                            paddingLeft: '15px',
-                                            textIndent: '-15px'
-                                        }}>
-                                            {line}
-                                        </div>
-                                    )) :
-                                    [
-                                        "• Managed team of 7 players, coordinating training schedules and strategin game planning",
-                                        "• Achieved 85% win rate over two seasons, securing House Cup victory in 2023",
-                                        "• Implemented innovative flying formations that were later adopted by other House teams"
-                                    ].map((point, index) => (
-                                        <div key={index} style={{ 
-                                            marginBottom: '3px',
-                                            paddingLeft: '15px',
-                                            textIndent: '-10px'
-                                        }}>
-                                            {point}
-                                        </div>
-                                    ))
-                                }
-                            </div>
-
-                            <div className={styles.rowEdu}> 
-                                <span> <b> {formData.organization || 'Defense Against the Dark Arts'} </b></span>
-                                <span>{formData.jobLocation || 'Hogwarts School'}</span>
-                            </div>
-
-                            <div className={styles.rowEdu}> 
-                                <span> <i>{formData.jobTitle || 'Teaching Assistant'}</i></span>
-                                <span>
-                                    {(formData.startMonth && formData.startYear && formData.endMonth && formData.endYear) ? 
-                                        `${formData.startMonth} ${formData.startYear} - ${formData.endMonth} ${formData.endYear}` : 
-                                        "June 2024 - May 2025"
-                                    }
-                                </span>
-                            </div>
-                            
-                            <div>
-                                {(formData.responsibilities) ? 
-                                    formData.responsibilities.split('\n').map((line, index) => (
-                                        <div key={index} style={{ 
-                                            marginBottom: '3px',
-                                            paddingLeft: '15px',
-                                            textIndent: '-15px'
-                                        }}>
-                                            {line}
-                                        </div>
-                                    )) :
-                                    [
-                                        "• Assisted Professor McGonagall in instructing 120+ students across years 1-6",
-                                        "• Developed supplementary curriculum focusing on practical defensive techniques",
-                                        "• Reduced classroom accidents by 60% through implementation of enhanced safety protocols",
-                                        "• Provided one-on-one tutoring for struggling students, achieving 95% pass rate improvement",
-                                    ].map((point, index) => (
-                                        <div key={index} style={{ 
-                                            marginBottom: '3px',
-                                            paddingLeft: '15px',
-                                            textIndent: '-10px'
-                                        }}>
-                                            {point}
-                                        </div>
-                                    ))
-                                }
-                            </div>
-
-
+                        ))}
                         </div>
                     </div>
 
@@ -239,6 +156,9 @@ export default function Preview({formData}) {
                         </div>
                     </div> 
                     
+                    <div className={styles.newSection}>
+                        <div className={styles.sectionHeader}>TEST</div>
+                    </div>
                 </article>
         </section>
     )

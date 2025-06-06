@@ -14,17 +14,34 @@ export default function Content() {
         gradMonth: '',
         gradYear:'',
         relCourseWorks:'',
-        organization:'',
-        jobLocation:'',
-        jobTitle:'',
-        startMonth: '',
-        startYear:'',
-        endMonth: '',
-        endYear: '',
-        isCurrentJob: '',
-        responsibilities: '',
 
     })
+
+    const [experiences, setExperiences] = useState(
+        [
+            {
+            id: Date.now(),
+            organization: '',
+            jobLocation: '',
+            jobTitle: '',
+            startMonth: '',
+            startYear: '',
+            endMonth: '',
+            endYear: '',
+            responsibilities: '',
+            },
+        ]
+    )
+
+    function handleExperiencesChange(id, event){
+        const {name, value} = event.target
+        setExperiences(prevExps =>
+            prevExps.map(exp => 
+                exp.id === id ? {...exp, [name]: value } : exp
+            )
+        )
+    }
+
 
     function handleInputChange(event){
         const {name, value} = event.target
@@ -33,6 +50,7 @@ export default function Content() {
             [name]: value
         }))
     }
+
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -44,12 +62,18 @@ export default function Content() {
             <div className={styles.formColumn}>
                 <Form 
                     formData={formData}
+                    experiences = {experiences}
+                    setExperiences={setExperiences}
                     onInputChange={handleInputChange}
+                    onExperiencesChange = {handleExperiencesChange}
                     onSubmit={handleSubmit}
                 />
             </div>
             <div className={styles.previewColumn}>
-                <Preview formData={formData}/>
+                <Preview 
+                    formData={formData}
+                    experiences = {experiences}
+                />
             </div>
         </div>
     )
