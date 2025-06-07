@@ -20,42 +20,34 @@ export default function Content() {
     const [experiences, setExperiences] = useState(
         [
             {
-            id: Date.now(),
-            organization: '',
-            jobLocation: '',
-            jobTitle: '',
-            startMonth: '',
-            startYear: '',
-            endMonth: '',
-            endYear: '',
-            responsibilities: '',
-            },
+                id: Date.now(),
+                organization: '',
+                jobLocation: '',
+                jobTitle: '',
+                startMonth: '',
+                startYear: '',
+                endMonth: '',
+                endYear: '',
+                responsibilities: '',
+                isCurrentJob: false,
+            }
         ]
     )
 
-    function handleExperiencesChange(id, event){
-        const {name, value} = event.target
-        setExperiences(prevExps =>
-            prevExps.map(exp => 
-                exp.id === id ? {...exp, [name]: value } : exp
-            )
-        )
-    }
+    const [awards, setAwards] = useState(
+        [
+            {
+                id: Date.now(),
+                awardTitle: '',
+                awardMonth: '',
+                awardYear: '',
 
+            }
+        ]
+    )
 
-    function handleInputChange(event){
-        const {name, value} = event.target
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }))
-    }
+    const [skills, setSkills] = useState(['']);
 
-
-    function handleSubmit(event) {
-        event.preventDefault()
-        console.log('Form submitted:', formData)
-    }
 
     return (
         <div className={styles.content}>
@@ -63,16 +55,19 @@ export default function Content() {
                 <Form 
                     formData={formData}
                     experiences = {experiences}
+                    awards = {awards}
+                    skills = {skills}
+                    setFormData ={setFormData}
+                    setAwards = {setAwards}
                     setExperiences={setExperiences}
-                    onInputChange={handleInputChange}
-                    onExperiencesChange = {handleExperiencesChange}
-                    onSubmit={handleSubmit}
+                    setSkills={setSkills}
                 />
             </div>
             <div className={styles.previewColumn}>
                 <Preview 
                     formData={formData}
                     experiences = {experiences}
+                    awards={awards}
                 />
             </div>
         </div>

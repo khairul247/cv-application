@@ -1,6 +1,6 @@
 import styles from '../styles/Preview.module.css'
 
-export default function Preview({formData, experiences}) {
+export default function Preview({formData, experiences, awards}) {
 
     return (
         <section className={styles.previewSection}>
@@ -53,8 +53,8 @@ export default function Preview({formData, experiences}) {
                                 <div className={styles.rowEdu}> 
                                     <span> <i>{experience.jobTitle || 'Auror Trainee'}</i></span>
                                     <span>
-                                        {(experience.startMonth || experience.startYear || experience.endMonth || experience.endYear) ? 
-                                            `${experience.startMonth} ${experience.startYear} - ${experience.endMonth} ${experience.endYear}` : 
+                                        {(experience.startMonth || experience.startYear || experience.endMonth || experience.endYear || experience.isCurrentJob) ? 
+                                            `${experience.startMonth} ${experience.startYear} - ${experience.isCurrentJob? 'Present': `${experience.endMonth} ${experience.endYear}`}` : 
                                             "June 2024 - May 2025"
                                         }
                                     </span>
@@ -94,34 +94,17 @@ export default function Preview({formData, experiences}) {
                     <div className={styles.newSection}>
                         <div className={styles.sectionHeader}>AWARDS</div>
                         <div>
-                            {[
-                                { 
-                                award: "Order of Merlin, First Class", 
-                                month: formData.award1Month, 
-                                year: formData.award1Year 
-                                },
-                                { 
-                                award: "Triwizard Tournament Participant", 
-                                month: formData.award2Month, 
-                                year: formData.award2Year 
-                                },
-                                { 
-                                award: "Dumbledore Army Founder", 
-                                month: formData.award3Month, 
-                                year: formData.award3Year 
-                                }
-                            ].map((item, index) => (
-                                <div key={index} style={{ 
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                }}>
-                                <span>{item.award}</span>
-                                <span>
-                                    {(item.month && item.year) ? 
-                                    `${item.month} ${item.year}` : 
-                                    "May 2024"
-                                    }
-                                </span>
+                            {awards.map((award) =>(
+                                <div key={award.id}>
+                                    <div className={styles.rowEdu}> 
+                                    <span> {award.awardTitle|| 'Order of Merlin, First Class'}</span>
+                                    <span>
+                                        {(award.awardMonth || award.awardYear) ? 
+                                            `${award.awardMonth} ${award.awardYear}` : 
+                                            "May 2025"
+                                        }
+                                    </span>
+                                </div>
                                 </div>
                             ))}
                         </div>
@@ -140,16 +123,16 @@ export default function Preview({formData, experiences}) {
                                     </div>
                                 )) :
                                 [
-                                    "• Advanced Patronus Casting (Corporeal Stag Patronus)",
-                                    "• Parseltongue Communication",
-                                    "• Broomstick Flight Proficiency (Firebolt Class License)",
-                                    "• Time-Turner Navigation (Restricted Use Permit)"
+                                    "Advanced Patronus Casting (Corporeal Stag Patronus)",
+                                    "Parseltongue Communication",
+                                    "Broomstick Flight Proficiency (Firebolt Class License)",
+                                    "Time-Turner Navigation (Restricted Use Permit)"
                                 ].map((point, index) => (
                                     <div key={index} style={{ 
                                         paddingLeft: '15px',
                                         textIndent: '-10px'
                                     }}>
-                                        {point}
+                                       • {point}
                                     </div>
                                 ))
                             }

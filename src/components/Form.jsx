@@ -1,14 +1,28 @@
 import styles from '../styles/Form.module.css'
 import Experience from './Experience'
+import Awards from './Awards'
+import Skills from './Skills'
 
+export default function Form({ formData, setFormData, experiences, setExperiences, awards, setAwards, skills, setSkills}) {
 
-export default function Form({ formData, onInputChange, onSubmit, experiences, setExperiences, onExperiencesChange }) {
+    function handleInputChange(event){
+        const {name, value} = event.target
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }))
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        console.log('Form submitted:', formData)
+    }
 
     return (
         <section className={styles.formSection}>
             <h2 className={styles.title}>Build Your Resume</h2>
 
-            <form onSubmit={onSubmit} className={styles.form}>
+            <form onSubmit={handleSubmit} className={styles.form}>
                 <fieldset className={styles.fieldset}>
                     <legend className={styles.legend}>Personal Information</legend>
 
@@ -19,7 +33,7 @@ export default function Form({ formData, onInputChange, onSubmit, experiences, s
                             id='name'
                             name='name'
                             value={formData.name}
-                            onChange={onInputChange}
+                            onChange={handleInputChange}
                             className={styles.input}
                             placeholder='e.g. Kasim Selamat'
                             />
@@ -32,7 +46,7 @@ export default function Form({ formData, onInputChange, onSubmit, experiences, s
                             id='phone'
                             name='phone'
                             value={formData.phone}
-                            onChange={onInputChange}
+                            onChange={handleInputChange}
                             className={styles.input}
                             placeholder='e.g. +601122337766'
                             />
@@ -45,7 +59,7 @@ export default function Form({ formData, onInputChange, onSubmit, experiences, s
                             id='email'
                             name='email'
                             value={formData.email}
-                            onChange={onInputChange}
+                            onChange={handleInputChange}
                             className={styles.input}
                             placeholder='e.g. john.doe@gmail.com'
                             />
@@ -62,7 +76,7 @@ export default function Form({ formData, onInputChange, onSubmit, experiences, s
                             id='university'
                             name='university'
                             value={formData.university}
-                            onChange={onInputChange}
+                            onChange={handleInputChange}
                             className={styles.input}
                             placeholder='e.g. Universiti Malaya'
                             />
@@ -75,7 +89,7 @@ export default function Form({ formData, onInputChange, onSubmit, experiences, s
                             id='degree'
                             name='degree'
                             value={formData.degree}
-                            onChange={onInputChange}
+                            onChange={handleInputChange}
                             className={styles.input}
                             placeholder='e.g. B.S., Materials Science and Engineering (CGPA 3.5)'
                             />
@@ -88,7 +102,7 @@ export default function Form({ formData, onInputChange, onSubmit, experiences, s
                             id='uniLocation'
                             name='uniLocation'
                             value={formData.uniLocation}
-                            onChange={onInputChange}
+                            onChange={handleInputChange}
                             className={styles.input}
                             placeholder='e.g. University Park, PA'
                             />
@@ -101,7 +115,7 @@ export default function Form({ formData, onInputChange, onSubmit, experiences, s
                                 <select 
                                 name="gradMonth"
                                 value={formData.gradMonth}
-                                onChange={onInputChange}
+                                onChange={handleInputChange}
                                 >
                                     <option value="">Month</option>
                                     <option value="January">January</option>
@@ -123,7 +137,7 @@ export default function Form({ formData, onInputChange, onSubmit, experiences, s
                                     type="number" 
                                     name="gradYear"
                                     value={formData.gradYear}
-                                    onChange={onInputChange} 
+                                    onChange={handleInputChange} 
                                     placeholder="2025" 
                                     min="1950" 
                                     max="2030"/>
@@ -138,19 +152,34 @@ export default function Form({ formData, onInputChange, onSubmit, experiences, s
                             name="relCourseWorks" 
                             placeholder="Tell us about yourself, your background, interests, and what makes you unique..."
                             value={formData.relCourseWorks}
-                            onChange={onInputChange}
+                            onChange={handleInputChange}
                         >
                         </textarea>
                     </div>
 
                 </fieldset>
 
-                <fieldset className={styles.fieldse}>
+                <fieldset className={styles.fieldset}>
                     <legend>Relevent Work Experiences</legend>
                     <Experience
                     experiences = {experiences}
                     setExperiences={setExperiences}
-                    onExperiencesChange={onExperiencesChange}
+                    />
+                </fieldset>
+
+                 <fieldset className={styles.fieldset}>
+                    <legend>Awards</legend>
+                    <Awards
+                    awards = {awards}
+                    setAwards={setAwards}
+                    />
+                </fieldset>
+
+                 <fieldset className={styles.fieldset}>
+                    <legend>Skills</legend>
+                    <Skills
+                    skills = {skills}
+                    setSkills={setSkills}
                     />
                 </fieldset>
             

@@ -1,6 +1,6 @@
 
 
-export default function Experience({experiences, setExperiences, onExperiencesChange}){
+export default function Experience({experiences, setExperiences}){
     //initialize the "Work Experiences"
 
     const addExperience = () => {
@@ -15,12 +15,25 @@ export default function Experience({experiences, setExperiences, onExperiencesCh
             endMonth: '',
             endYear: '',
             responsibilities: '',
+            isCurrentJob: false,
         }])
     }
 
     const removeExperience = (id) => {
         const filtered = experiences.filter(exp => exp.id !== id);
         setExperiences(filtered);
+    }
+
+    function handleExperiencesChange(id, event){
+        const {name, value, type, checked} = event.target
+
+        const fieldValue = type === 'checkbox' ? checked : value;
+
+        setExperiences(prevExps =>
+            prevExps.map(exp => 
+                exp.id === id ? {...exp, [name]: fieldValue } : exp
+            )
+        )
     }
 
     return (
@@ -34,7 +47,7 @@ export default function Experience({experiences, setExperiences, onExperiencesCh
                             id="organization"
                             name="organization"
                             value={experience.organization}
-                            onChange={(e) => onExperiencesChange(experience.id,e)}
+                            onChange={(e) => handleExperiencesChange(experience.id,e)}
                             placeholder="Materials Research Institute (MRI)"
                         />
                     </div>
@@ -46,7 +59,7 @@ export default function Experience({experiences, setExperiences, onExperiencesCh
                             id="jobLocation"
                             name="jobLocation"
                             value={experience.jobLocation}
-                            onChange={(e) => onExperiencesChange(experience.id,e)}
+                            onChange={(e) => handleExperiencesChange(experience.id,e)}
                             placeholder="University Park, PA"
                         />
                     </div>
@@ -58,7 +71,7 @@ export default function Experience({experiences, setExperiences, onExperiencesCh
                             id="jobTitle"
                             name="jobTitle"
                             value={experience.jobTitle}
-                            onChange={(e) => onExperiencesChange(experience.id,e)}
+                            onChange={(e) => handleExperiencesChange(experience.id,e)}
                             placeholder="Research Assistant"
                         />
                     </div>
@@ -69,8 +82,7 @@ export default function Experience({experiences, setExperiences, onExperiencesCh
                             <select
                                 name="startMonth"
                                 value={experience.startMonth}
-                                onChange={(e) => onExperiencesChange(experience.id,e)}
-                                disabled={experience.isCurrentJob}
+                                onChange={(e) => handleExperiencesChange(experience.id,e)}
                             >
                                 <option value="">Month</option>
                                 <option value="January">January</option>
@@ -90,11 +102,10 @@ export default function Experience({experiences, setExperiences, onExperiencesCh
                                 type="number"
                                 name="startYear"
                                 value={experience.startYear}
-                                onChange={(e) => onExperiencesChange(experience.id,e)}
+                                onChange={(e) => handleExperiencesChange(experience.id,e)}
                                 placeholder="2024"
                                 min="1950"
                                 max="2030"
-                                disabled={experience.isCurrentJob}
                             />
                         </div>
                     </div>
@@ -105,7 +116,7 @@ export default function Experience({experiences, setExperiences, onExperiencesCh
                             <select
                                 name="endMonth"
                                 value={experience.endMonth}
-                                onChange={(e) => onExperiencesChange(experience.id,e)}
+                                onChange={(e) => handleExperiencesChange(experience.id,e)}
                                 disabled={experience.isCurrentJob}
                             >
                                 <option value="">Month</option>
@@ -126,7 +137,7 @@ export default function Experience({experiences, setExperiences, onExperiencesCh
                                 type="number"
                                 name="endYear"
                                 value={experience.endYear}
-                                onChange={(e) => onExperiencesChange(experience.id,e)}
+                                onChange={(e) => handleExperiencesChange(experience.id,e)}
                                 placeholder="2024"
                                 min="1950"
                                 max="2030"
@@ -142,7 +153,9 @@ export default function Experience({experiences, setExperiences, onExperiencesCh
                             id="isCurrentJob"
                             name="isCurrentJob"
                             checked={experience.isCurrentJob}
-                            onChange={(e) => onExperiencesChange(experience.id,e)}
+                            onChange={(e) => {
+                                handleExperiencesChange(experience.id,e)
+                            }}
                         />
                         <label htmlFor="isCurrentJob" style={{ fontWeight: 'normal', margin: 0 }}>
                             I currently work here
@@ -155,7 +168,7 @@ export default function Experience({experiences, setExperiences, onExperiencesCh
                             id="responsibilities"
                             name="responsibilities"
                             value={experience.responsibilities}
-                            onChange={(e) => onExperiencesChange(experience.id,e)}
+                            onChange={(e) => handleExperiencesChange(experience.id,e)}
                             rows="6"
                             placeholder="• Provided training to undergraduate and graduate students on how to operate Helium pycnometer.&#10;• Contributed to research efforts by conducting sample analyses using X-ray Diffractometer (XRD), Helium pycnometer, microindenter, tensile testing, and various other techniques."
                         />
