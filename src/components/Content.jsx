@@ -46,7 +46,7 @@ export default function Content() {
         ]
     )
 
-    const [skills, setSkills] = useState(['']);
+    const [skills, setSkills] = useState('');
 
 
     return (
@@ -68,6 +68,7 @@ export default function Content() {
                     formData={formData}
                     experiences = {experiences}
                     awards={awards}
+                    skills = {skills}
                 />
             </div>
         </div>

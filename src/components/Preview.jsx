@@ -1,6 +1,6 @@
 import styles from '../styles/Preview.module.css'
 
-export default function Preview({formData, experiences, awards}) {
+export default function Preview({formData, experiences, awards, skills}) {
 
     return (
         <section className={styles.previewSection}>
@@ -113,13 +113,13 @@ export default function Preview({formData, experiences, awards}) {
                     <div className={styles.newSection}>
                         <div className={styles.sectionHeader}>SKILLS</div>
                         <div>
-                           {(formData.responsibilities) ? 
-                                formData.responsibilities.split('\n').map((line, index) => (
+                           {(skills) ? 
+                                skills.split('\n').map((line, index) => (
                                     <div key={index} style={{ 
                                         paddingLeft: '15px',
                                         textIndent: '-10px'
                                     }}>
-                                        {line}
+                                       • {line}
                                     </div>
                                 )) :
                                 [

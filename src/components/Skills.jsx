@@ -1,51 +1,26 @@
 
 export default function Skills({skills, setSkills}) {
-    
-    const addSkill =() => {
-        setSkills([...skills,''])
-    }
 
-    const removeSkill = (index) => {
-        const filtered = skills.filter((skill,i) => i !== index);
-        setSkills(filtered);
-    }
-
-    function handleSkillsChange(index, value){
-        setSkills(
-            skills.map((skill,i) => i === index ? value: skill)
-        )
+    function handleSkillsChange(event){
+        setSkills(event.target.value)
     }
 
     return (
             <>
-                {skills.map((skill,index) => (
-                    <div key={`skill-${index}`}>
-                        <div>
-                            <label htmlFor="skill">Skill:</label>
-                            <input
-                                type="text"
-                                id={index}
-                                name="skill"
-                                value={skill}
-                                onChange={(e) => handleSkillsChange(index,e.target.value)}
-                                placeholder="Research Assistant"
-                            />
-                        </div>
-
-                        <div>
-                            <button onClick={() => addSkill()}>
-                                Add
-                            </button>
-                        </div>
-
-                        {index > 0 && (<div> 
-                            <button onClick={() => removeSkill(index)}>
-                                Remove
-                            </button>
-                        
-                        </div>)}
-                    </div>
-                ))}
+                <div>
+                    <label htmlFor="skills"></label>
+                    <textarea
+                        id="skills"
+                        name="skills"
+                        value={skills}
+                        onChange={handleSkillsChange}
+                        rows="6"
+                        placeholder="• Provided training to undergraduate and graduate students on how to operate Helium pycnometer.&#10;• Contributed to research efforts by conducting sample analyses using X-ray Diffractometer (XRD), Helium pycnometer, microindenter, tensile testing, and various other techniques."
+                    />
+                    <small style={{ color: '#666', fontSize: '12px' }}>
+                        Press enter after you finish your line to list your responsibilities and achievements
+                    </small>
+                 </div>
             </>
     )
     
