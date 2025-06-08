@@ -20,8 +20,6 @@ export default function Form({ formData, setFormData, experiences, setExperience
 
     return (
         <section className={styles.formSection}>
-            <h2 className={styles.title}>Build Your Resume</h2>
-
             <form onSubmit={handleSubmit} className={styles.form}>
                 <fieldset className={styles.fieldset}>
                     <legend className={styles.legend}>Personal Information</legend>
@@ -108,14 +106,15 @@ export default function Form({ formData, setFormData, experiences, setExperience
                             />
                     </div>
 
-                     <div>
-                        <label>Graduation Date:</label>
-                        <div>
-                            <div>
+                     <div className={styles.dateInputGroup}>
+                        <label className={styles.label}>Graduation Date:</label>
+                        <div className={styles.dateContainer}>
+                            <div className={styles.dateGroup}>
                                 <select 
                                 name="gradMonth"
                                 value={formData.gradMonth}
                                 onChange={handleInputChange}
+                                className={styles.select}
                                 >
                                     <option value="">Month</option>
                                     <option value="January">January</option>
@@ -132,10 +131,11 @@ export default function Form({ formData, setFormData, experiences, setExperience
                                     <option value="December">December</option>
                                 </select>
                             </div>
-                            <div>
+                            <div className={styles.dateGroup}>
                                 <input 
                                     type="number" 
                                     name="gradYear"
+                                    className={styles.yearInput}
                                     value={formData.gradYear}
                                     onChange={handleInputChange} 
                                     placeholder="2025" 
@@ -145,14 +145,15 @@ export default function Form({ formData, setFormData, experiences, setExperience
                         </div>
                     </div>
 
-                    <div>
-                        <label htmlFor="relCourseWorks">Relevant Courseworks:</label>
+                    <div className={styles.inputGroup}>
+                        <label htmlFor="relCourseWorks" className={styles.label}>Relevant Courseworks:</label>
                         <textarea 
                             id="relCourseWorks" 
                             name="relCourseWorks" 
-                            placeholder="Tell us about yourself, your background, interests, and what makes you unique..."
+                            placeholder="Relevant courseworks that you took during your university years"
                             value={formData.relCourseWorks}
                             onChange={handleInputChange}
+                            className={styles.textarea}
                         >
                         </textarea>
                     </div>
@@ -160,15 +161,16 @@ export default function Form({ formData, setFormData, experiences, setExperience
                 </fieldset>
 
                 <fieldset className={styles.fieldset}>
-                    <legend>Relevent Work Experiences</legend>
+                    <legend className={styles.legend}>Relevant Work Experiences</legend>
                     <Experience
                     experiences = {experiences}
                     setExperiences={setExperiences}
+                    styles={styles}
                     />
                 </fieldset>
 
                  <fieldset className={styles.fieldset}>
-                    <legend>Awards</legend>
+                    <legend className={styles.legend}>Awards</legend>
                     <Awards
                     awards = {awards}
                     setAwards={setAwards}
@@ -176,7 +178,7 @@ export default function Form({ formData, setFormData, experiences, setExperience
                 </fieldset>
 
                  <fieldset className={styles.fieldset}>
-                    <legend>Skills</legend>
+                    <legend className={styles.legend}>Skills</legend>
                     <Skills
                     skills = {skills}
                     setSkills={setSkills}

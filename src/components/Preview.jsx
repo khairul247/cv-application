@@ -138,10 +138,6 @@ export default function Preview({formData, experiences, awards, skills}) {
                             }
                         </div>
                     </div> 
-                    
-                    <div className={styles.newSection}>
-                        <div className={styles.sectionHeader}>TEST</div>
-                    </div>
                 </article>
         </section>
     )
