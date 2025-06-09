@@ -68,7 +68,7 @@ export default function Form({ formData, setFormData, experiences, setExperience
                     <legend className={styles.legend}>Education</legend>
 
                     <div className={styles.inputGroup}>
-                        <label htmlFor="university" className={styles.label}>Your alma mater</label>
+                        <label htmlFor="university" className={styles.label}>Your Alma Mater</label>
                         <input 
                             type="text"
                             id='university'
@@ -94,7 +94,7 @@ export default function Form({ formData, setFormData, experiences, setExperience
                     </div>
 
                      <div className={styles.inputGroup}>
-                        <label htmlFor="uniLocation" className={styles.label}>Location:</label>
+                        <label htmlFor="uniLocation" className={styles.label}>Location</label>
                         <input 
                             type="text"
                             id='uniLocation'
@@ -107,7 +107,7 @@ export default function Form({ formData, setFormData, experiences, setExperience
                     </div>
 
                      <div className={styles.dateInputGroup}>
-                        <label className={styles.label}>Graduation Date:</label>
+                        <label className={styles.label}>Graduation Date</label>
                         <div className={styles.dateContainer}>
                             <div className={styles.dateGroup}>
                                 <select 
@@ -146,7 +146,7 @@ export default function Form({ formData, setFormData, experiences, setExperience
                     </div>
 
                     <div className={styles.inputGroup}>
-                        <label htmlFor="relCourseWorks" className={styles.label}>Relevant Courseworks:</label>
+                        <label htmlFor="relCourseWorks" className={styles.label}>Relevant Courseworks</label>
                         <textarea 
                             id="relCourseWorks" 
                             name="relCourseWorks" 
@@ -174,6 +174,7 @@ export default function Form({ formData, setFormData, experiences, setExperience
                     <Awards
                     awards = {awards}
                     setAwards={setAwards}
+                    styles={styles}
                     />
                 </fieldset>
 
@@ -182,6 +183,7 @@ export default function Form({ formData, setFormData, experiences, setExperience
                     <Skills
                     skills = {skills}
                     setSkills={setSkills}
+                    styles={styles}
                     />
                 </fieldset>
             
