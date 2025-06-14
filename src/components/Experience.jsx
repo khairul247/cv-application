@@ -193,19 +193,21 @@ export default function Experience({experiences, setExperiences, styles}){
                                 *Press "enter" after you finish your line to list your responsibilities/achievements*
                             </small>
                         </div>
-
-                        <div>
-                            <button onClick={() => addExperience()}>
-                                Add
-                            </button>
-                        </div>
-
-                        {index> 0 && (<div> 
-                            <button onClick={() => removeExperience(experience.id)}>
-                                Remove
-                            </button>
                         
-                        </div>)}
+                        <div className={styles.buttonContainer}>
+                            <div>
+                                <button className={styles.button} onClick={() => addExperience()}>
+                                    Add
+                                </button>
+                            </div>
+
+                            {index> 0 && (<div> 
+                                <button className={styles.buttonRemove} onClick={() => removeExperience(experience.id)}>
+                                    Remove
+                                </button>
+                            
+                            </div>)}
+                        </div>
                      
                     </div>
 

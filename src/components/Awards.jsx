@@ -82,18 +82,20 @@ export default function Awards({awards, setAwards, styles}) {
                                 </div>
                         </div>
 
-                    <div>
-                        <button onClick={() => addAward()}>
-                            Add
-                        </button>
-                    </div>
+                    <div className={styles.buttonContainer}>
+                            <div>
+                                <button className={styles.button} onClick={() => addAward()}>
+                                    Add
+                                </button>
+                            </div>
 
-                    {index> 0 && (<div> 
-                        <button onClick={() => removeAward(award.id)}>
-                            Remove
-                        </button>
-                    
-                    </div>)}
+                            {index> 0 && (<div> 
+                                <button className={styles.buttonRemove} onClick={() => removeAward(award.id)}>
+                                    Remove
+                                </button>
+                            
+                            </div>)}
+                        </div>
                      
                     </div>
 

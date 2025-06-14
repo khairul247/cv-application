@@ -236,3 +236,95 @@
     border-radius: 8px;
     margin-bottom: 2rem;
 }
+
+.button {
+            padding: 12px 24px;
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+            margin-right: 8px;
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        .button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+        }
+
+        .button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2), 0 2px 4px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Remove button variant */
+        .buttonRemove {
+            padding: 12px 24px;
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+            margin-right: 8px;
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .buttonRemove:hover {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+        }
+
+        .buttonRemove:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .buttonRemove:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2), 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        /* Button container */
+        .buttonContainer {
+            display: flex;
+            gap: 8px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .buttonContainer {
+                flex-direction: column;
+            }
+            
+            .button, .buttonRemove {
+                margin-right: 0;
+                width: 100%;
+                justify-content: center;
+            }
+        }
