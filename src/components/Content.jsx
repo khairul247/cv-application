@@ -4,7 +4,10 @@ import Preview from "./Preview";
 import styles from '../styles/Content.module.css'
 
 export default function Content() {
-    const [formData, setFormData] = useState({
+
+    const [activeTab, setActiveTab] = useState('personal')
+
+    const [edus, setEdus] = useState({
         name: '',
         phone: '',
         email: '',
@@ -15,6 +18,12 @@ export default function Content() {
         gradYear:'',
         relCourseWorks:'',
 
+    })
+
+    const [infos, setInfos] = useState({
+        name: '',
+        phone: '',
+        email: '',
     })
 
     const [experiences, setExperiences] = useState(
@@ -38,9 +47,9 @@ export default function Content() {
         [
             {
                 id: Date.now(),
-                awardTitle: '',
-                awardMonth: '',
-                awardYear: '',
+                title: '',
+                month: '',
+                year: '',
 
             }
         ]
@@ -53,11 +62,15 @@ export default function Content() {
         <div className={styles.content}>
             <div className={styles.formColumn}>
                 <Form 
-                    formData={formData}
+                    activeTab={activeTab}
+                    infos = {infos}
+                    edus = {edus}
                     experiences = {experiences}
                     awards = {awards}
                     skills = {skills}
-                    setFormData ={setFormData}
+                    setActiveTab ={setActiveTab}
+                    setEdus ={setEdus}
+                    setInfos ={setInfos}
                     setAwards = {setAwards}
                     setExperiences={setExperiences}
                     setSkills={setSkills}
@@ -65,7 +78,8 @@ export default function Content() {
             </div>
             <div className={styles.previewColumn}>
                 <Preview 
-                    formData={formData}
+                    edus={edus}
+                    infos={infos}
                     experiences = {experiences}
                     awards={awards}
                     skills = {skills}

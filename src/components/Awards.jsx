@@ -30,7 +30,7 @@ export default function Awards({awards, setAwards, styles}) {
                 {awards.map((award,index) => (
                     <div key={award.id} className={styles.contentGroup}>
                     <div className = {styles.inputGroup}>
-                        <label className={styles.label} htmlFor="awardTitle">Award Title:</label>
+                        <label className={styles.label} htmlFor="title">Award Title:</label>
                         <input
                             type="text"
                             id="title"
@@ -47,10 +47,10 @@ export default function Awards({awards, setAwards, styles}) {
                                 <div className={styles.dateContainer}>
                                     <div className={styles.dateGroup}>
                                         <select
-                                            name="awardMonth"
-                                            value={award.awardMonth}
+                                            name="month"
+                                            value={award.month}
                                             className={styles.select}
-                                            onChange={(e) => handleAwardsChange(awards.id,e)}
+                                            onChange={(e) => handleAwardsChange(award.id,e)}
                                         >
                                             <option value="">Month</option>
                                             <option value="January">January</option>
@@ -84,13 +84,13 @@ export default function Awards({awards, setAwards, styles}) {
 
                     <div className={styles.buttonContainer}>
                             <div>
-                                <button className={styles.button} onClick={() => addAward()}>
+                                <button type="button" className={styles.button} onClick={() => addAward()}>
                                     Add
                                 </button>
                             </div>
 
                             {index> 0 && (<div> 
-                                <button className={styles.buttonRemove} onClick={() => removeAward(award.id)}>
+                                <button type="button" className={styles.buttonRemove} onClick={() => removeAward(award.id)}>
                                     Remove
                                 </button>
                             

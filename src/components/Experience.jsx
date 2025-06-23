@@ -196,13 +196,13 @@ export default function Experience({experiences, setExperiences, styles}){
                         
                         <div className={styles.buttonContainer}>
                             <div>
-                                <button className={styles.button} onClick={() => addExperience()}>
+                                <button type="button" className={styles.button} onClick={() => addExperience()}>
                                     Add
                                 </button>
                             </div>
 
                             {index> 0 && (<div> 
-                                <button className={styles.buttonRemove} onClick={() => removeExperience(experience.id)}>
+                                <button type="button" className={styles.buttonRemove} onClick={() => removeExperience(experience.id)}>
                                     Remove
                                 </button>
                             

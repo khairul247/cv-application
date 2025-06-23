@@ -1,33 +1,33 @@
 import styles from '../styles/Preview.module.css'
 
-export default function Preview({formData, experiences, awards, skills}) {
+export default function Preview({edus, experiences, awards, skills, infos}) {
 
     return (
         <section className={styles.previewSection}>
                 <article className={styles.resume}>
                     <header className={styles.resumeHeader}>
                         <h1 className={styles.name}>
-                            {formData.name || 'Harry James Potter'}
+                            {infos.name || 'Harry James Potter'}
                         </h1>
                         <div className={styles.contactInfor}>
-                            <span>{formData.phone || '+44 (0) 207-946-0958'}</span>
+                            <span>{infos.phone || '+44 (0) 207-946-0958'}</span>
                             <span className={styles.separator}> | </span>
-                            <span>{formData.email || 'h.potter@hogwarts.edu'}</span>
+                            <span>{infos.email || 'h.potter@hogwarts.edu'}</span>
                         </div>
                     </header>
                     <div className={styles.newSection}>
                         <div className={styles.sectionHeader}>EDUCATION</div>
                         <div className='eduInfo'>
                             <div className={styles.rowEdu}> 
-                                <span> <b> {formData.university || 'Hogwarts School of Witchcraft and Wizardry'} </b></span>
-                                <span>{formData.uniLocation || 'Highlands, Scotland'}</span>
+                                <span> <b> {edus.university || 'Hogwarts School of Witchcraft and Wizardry'} </b></span>
+                                <span>{edus.uniLocation || 'Highlands, Scotland'}</span>
                             </div>
 
                             <div className={styles.rowEdu}> 
-                                <span> <b>{formData.degree || 'Nastily Exhausting Wizarding Tests (N.E.W.T.s), 5(O), 1(E)'}</b></span>
+                                <span> <b>{edus.degree || 'Nastily Exhausting Wizarding Tests (N.E.W.T.s), 5(O), 1(E)'}</b></span>
                                 <span>
-                                    {(formData.gradMonth && formData.gradYear) ? 
-                                        `${formData.gradMonth} ${formData.gradYear}` : 
+                                    {(edus.gradMonth && edus.gradYear) ? 
+                                        `${edus.gradMonth} ${edus.gradYear}` : 
                                         "June 2024"
                                     }
                                 </span>
@@ -35,7 +35,7 @@ export default function Preview({formData, experiences, awards, skills}) {
                             
                             <div> 
                                 <span>Relevant courseworks: </span>
-                                <span>{formData.relCourseWorks || 'Advanced Transfiguration, Potions Theory and Practice, Charms and Enchantments, Herbology Applications, Care of Magical Creatures, Ancient Runes, Arithmancy, Defense Against the Dark Arts Mastery, Advanced Dueling Techniques.'}</span>
+                                <span>{edus.relCourseWorks || 'Advanced Transfiguration, Potions Theory and Practice, Charms and Enchantments, Herbology Applications, Care of Magical Creatures, Ancient Runes, Arithmancy, Defense Against the Dark Arts Mastery, Advanced Dueling Techniques.'}</span>
                             </div>
                         </div>
                     </div>
@@ -97,10 +97,10 @@ export default function Preview({formData, experiences, awards, skills}) {
                             {awards.map((award) =>(
                                 <div key={award.id}>
                                     <div className={styles.rowEdu}> 
-                                    <span> {award.awardTitle|| 'Order of Merlin, First Class'}</span>
+                                    <span> {award.title|| 'Order of Merlin, First Class'}</span>
                                     <span>
-                                        {(award.awardMonth || award.awardYear) ? 
-                                            `${award.awardMonth} ${award.awardYear}` : 
+                                        {(award.month || award.year) ? 
+                                            `${award.month} ${award.year}` : 
                                             "May 2025"
                                         }
                                     </span>
