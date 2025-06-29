@@ -10,7 +10,8 @@ export default function Form({ activeTab, setActiveTab, edus, setEdus, infos,set
 
     function handleSubmit(event) {
         event.preventDefault()
-        console.log('Form submitted:')
+        console.log('Form submitted')
+
     }
 
     return (
@@ -70,7 +71,7 @@ export default function Form({ activeTab, setActiveTab, edus, setEdus, infos,set
                 </fieldset>)}
             
                 <button type='submit' className={styles.button}>
-                    Generate Resume
+                    Print Your Resume
                 </button>
 
             </form>
